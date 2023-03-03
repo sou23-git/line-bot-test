@@ -13,10 +13,10 @@ import scw    #先ほどファイルをインポート
 
 app=Flask(__name__)
 #環境変数の取得
-YOUR_CHANNEL_ACCESS_TOKEN = os.environ["C/R9zrByu/3DDFMEaGI8gV+XQePJV1ZC5ApLbHzVBuhqNCMLjMLrL6s+MuZs+Prl6Qu1hh9LdSlgz746Xzfaa8pnTeweyb5FeSHFByr+m31IcHUVLQZw5agbb+swmH2GnRx7mO8n8yOadl6rt7GHdwdB04t89/1O/w1cDnyilFU="]
-YOUR_CHANNEL_SECRET = os.environ["63d4fc0f5af7948c6658ab08b6a32c4b"]
-line_bot_api=LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
-handler=WebhookHandler(YOUR_CHANNEL_SECRET)
+YOUR_CHANNEL_SECRET = "63d4fc0f5af7948c6658ab08b6a32c4b"
+YOUR_CHANNEL_ACCESS_TOKEN = "C/R9zrByu/3DDFMEaGI8gV+XQePJV1ZC5ApLbHzVBuhqNCMLjMLrL6s+MuZs+Prl6Qu1hh9LdSlgz746Xzfaa8pnTeweyb5FeSHFByr+m31IcHUVLQZw5agbb+swmH2GnRx7mO8n8yOadl6rt7GHdwdB04t89/1O/w1cDnyilFU="
+line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
+handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 #テスト用
 @app.route("/")
