@@ -1,1 +1,1 @@
-web:python=weather-get.py
+web:python=main.py
