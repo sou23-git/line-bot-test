@@ -51,8 +51,8 @@ def handle_message(event):
         preview_image_path = f"static/images/marimo_sunny.png"
         #送信
         image_message = ImageSendMessage(
-            original_content_url=f"https://github.com/sou23-git/line-bot-test/blob/main/{main_image_path}",
-            preview_image_url=f"https://github.com/sou23-git/line-bot-test/blob/main/{preview_image_path}",
+            original_content_url=f"https://line-bot-sou23-git-1.onrender.com/{main_image_path}",
+            preview_image_url=f"https://line-bot-sou23-git-1.onrender.com/{preview_image_path}",
         )
         line_bot_api.push_message(get_user_id,image_message)
     elif "明日" in text_in:   #scw.pyのtom_getw関数を呼び出している
