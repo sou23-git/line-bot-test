@@ -1,7 +1,7 @@
 from flask import Flask,request,abort
 from linebot import LineBotApi,WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent,TextMessage,TextSendMessage
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
 import os
 import requests
 import pprint
@@ -38,11 +38,13 @@ def callback():
 
 @handler.add(MessageEvent,message=TextMessage)
 def handle_message(event):
+    
     #入力された文字を取得
     text_in = event.message.text
 
     if "今日" in text_in:   #scw.pyのgetw関数を呼び出している
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=scw.getw()))
+        line_bot_api.push_message(event.source.user_id, ImageSendMessage(image='marimo_sunny.jpg'))
     elif "明日" in text_in:   #scw.pyのtom_getw関数を呼び出している
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=scw.tom_getw()))
     else:   #「今日」「明日」以外の文字はオウム返しする

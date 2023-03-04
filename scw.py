@@ -2,7 +2,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 
 def getw():    #今日の天気スクレイピング
-    #対象のサイトURL
+    #対象のサイトURL（天気予報）
     url = "https://tenki.jp/forecast/6/30/6200/27100/"
     #インスタンス作成
     res = urllib.request.urlopen(url)
