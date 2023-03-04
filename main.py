@@ -50,11 +50,11 @@ def handle_message(event):
         main_image_path = f"static/images/marimo_sunny.png"
         preview_image_path = f"static/images/marimo_sunny.png"
         #送信
-        image_message = ImageSendMessage(
+        messages = ImageSendMessage(
             original_content_url=f"https://line-bot-sou23-git-1.onrender.com/{main_image_path}",
             preview_image_url=f"https://line-bot-sou23-git-1.onrender.com/{preview_image_path}",
         )
-        line_bot_api.push_message(get_user_id.user_id[:5],messages=image_message)
+        line_bot_api.push_message(get_user_id, messages=messages)
     elif "明日" in text_in:   #scw.pyのtom_getw関数を呼び出している
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=scw.tom_getw()))
 
@@ -68,4 +68,3 @@ if __name__=="__main__":
     app.run(host="0.0.0.0",port=port)
 
 #line_bot_api.push_message(event.source.user_id, ImageSendMessage(image='marimo_sunny.jpg'))
-#https://github.com/sou23-git/line-bot-test/blob/main/images/marimo_sunny.png
