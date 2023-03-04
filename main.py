@@ -46,7 +46,7 @@ def handle_message(event):
 
     if "今日" in text_in:   #scw.pyのgetw関数を呼び出している
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=scw.getw()))
-        line_bot_api.push_message(get_user_id, TextSendMessage(text=f"またね！"))
+        line_bot_api.push_message(get_user_id,TextSendMessage(text=scw.getw()))
     elif "明日" in text_in:   #scw.pyのtom_getw関数を呼び出している
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=scw.tom_getw()))
         line_bot_api.push_message(get_user_id, TextSendMessage(text=f"またね！"))
