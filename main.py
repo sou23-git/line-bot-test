@@ -38,19 +38,28 @@ def callback():
 
 @handler.add(MessageEvent,message=TextMessage)
 def handle_message(event):
+    #user_idを取得
+    get_user_id = line_bot_api.get_profile(event.source.user_id)
     
     #入力された文字を取得
     text_in = event.message.text
 
     if "今日" in text_in:   #scw.pyのgetw関数を呼び出している
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=scw.getw()))
-        line_bot_api.push_message(event.source.user_id, ImageSendMessage(image='marimo_sunny.jpg'))
+        line_bot_api.push_message(get_user_id, TextSendMessage(text="またね！"))
     elif "明日" in text_in:   #scw.pyのtom_getw関数を呼び出している
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=scw.tom_getw()))
+        line_bot_api.push_message(get_user_id, TextSendMessage(text="またね！"))
+
     else:   #「今日」「明日」以外の文字はオウム返しする
      line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+
+def push_message(self, to, messages, timeuot=None):
+
 
 
 if __name__=="__main__":
     port=int(os.getenv("PORT",5000))
     app.run(host="0.0.0.0",port=port)
+
+#line_bot_api.push_message(event.source.user_id, ImageSendMessage(image='marimo_sunny.jpg'))
