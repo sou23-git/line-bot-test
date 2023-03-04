@@ -47,8 +47,8 @@ def handle_message(event):
     if "今日" in text_in:   #scw.pyのgetw関数を呼び出している
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=scw.getw()))
         #画像用意
-        main_image_path = f"images/marimo_sunny.png"
-        preview_image_path = f"images\marimo_sunny.png"
+        main_image_path = f"static/images/marimo_sunny.png"
+        preview_image_path = f"static/images/marimo_sunny.png"
         #送信
         image_message = ImageSendMessage(
             original_content_url=f"https://github.com/sou23-git/line-bot-test/blob/main/{main_image_path}",
@@ -60,6 +60,8 @@ def handle_message(event):
 
     else:   #「今日」「明日」以外の文字はオウム返しする
      line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+
+
 
 if __name__=="__main__":
     port=int(os.getenv("PORT",5000))
