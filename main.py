@@ -54,10 +54,6 @@ def handle_message(event):
     else:   #「今日」「明日」以外の文字はオウム返しする
      line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
 
-def push_message(self, to, messages, timeuot=None):
-
-
-
 if __name__=="__main__":
     port=int(os.getenv("PORT",5000))
     app.run(host="0.0.0.0",port=port)
