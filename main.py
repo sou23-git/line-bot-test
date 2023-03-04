@@ -57,14 +57,30 @@ def handle_message(event):
         line_bot_api.push_message(get_user_id, messages=messages)
     elif "明日" in text_in:   #scw.pyのtom_getw関数を呼び出している
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=scw.tom_getw()))
+        #画像用意
+        main_image_path = f"static/images/marimo_cloudy.png"
+        preview_image_path = f"static/images/marimo_cloudy.png"
+        #送信
+        messages = ImageSendMessage(
+            original_content_url=f"https://line-bot-sou23-git-1.onrender.com/{main_image_path}",
+            preview_image_url=f"https://line-bot-sou23-git-1.onrender.com/{preview_image_path}",
+        )
+        line_bot_api.push_message(get_user_id, messages=messages)
 
     else:   #「今日」「明日」以外の文字はオウム返しする
      line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+     #画像用意
+        main_image_path = f"static/images/marimo_rainy.png"
+        preview_image_path = f"static/images/marimo_rainy.png"
+        #送信
+        messages = ImageSendMessage(
+            original_content_url=f"https://line-bot-sou23-git-1.onrender.com/{main_image_path}",
+            preview_image_url=f"https://line-bot-sou23-git-1.onrender.com/{preview_image_path}",
+        )
+        line_bot_api.push_message(get_user_id, messages=messages)
 
 
 
 if __name__=="__main__":
     port=int(os.getenv("PORT",5000))
     app.run(host="0.0.0.0",port=port)
-
-#line_bot_api.push_message(event.source.user_id, ImageSendMessage(image='marimo_sunny.jpg'))
