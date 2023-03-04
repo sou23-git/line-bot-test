@@ -45,6 +45,7 @@ def handle_message(event):
     text_in = event.message.text
 
     if "今日" in text_in:   #scw.pyのgetw関数を呼び出している
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=scw.getw()))
         #画像用意
         main_image_path = f"static/images/marimo_sunny.png"
         preview_image_path = f"static/images/marimo_sunny.png"
@@ -53,8 +54,7 @@ def handle_message(event):
             original_content_url=f"https://line-bot-sou23-git-1.onrender.com/{main_image_path}",
             preview_image_url=f"https://line-bot-sou23-git-1.onrender.com/{preview_image_path}",
         )
-        line_bot_api.reply_message(event.reply_token, image_message)
-        #line_bot_api.push_message(get_user_id,image_message)
+        line_bot_api.push_message(get_user_id,messages=image_message)
     elif "明日" in text_in:   #scw.pyのtom_getw関数を呼び出している
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=scw.tom_getw()))
 
