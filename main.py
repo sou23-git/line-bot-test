@@ -39,7 +39,7 @@ def callback():
 @handler.add(MessageEvent,message=TextMessage)
 def handle_message(event):
     #user_idを取得
-    get_user_id = "U20cfda248cc2943c23a9d97bdaf7968b"
+    get_user_id = event.source.user_id
     
     #入力された文字を取得
     text_in = event.message.text
